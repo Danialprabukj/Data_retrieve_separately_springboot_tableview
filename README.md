@@ -16,4 +16,4 @@ Need Xampp and heidi sql
 
 Xampp -> To start mysql server.
 Heidi sql -> To view the data.
-Table will be Automatically create but we need to enter database in application.yml file.
+Table will be Automatically created but we need to enter database in application.yml file.
