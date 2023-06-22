@@ -1,0 +1,18 @@
+spring: 
+  datasource: 
+    driverClassName: com.mysql.jdbc.Driver 
+    url: jdbc:mysql://localhost:3306/EMS 
+    username: root 
+    password: 
+  jackson: 
+    serialization: 
+      FAIL_ON_EMPTY_BEANS: false 
+  h2: 
+    console: 
+      settings: 
+        web-allow-others: true 
+      enabled: true 
+      path: /db 
+  jpa: 
+      hibernate: 
+        ddl-auto: update

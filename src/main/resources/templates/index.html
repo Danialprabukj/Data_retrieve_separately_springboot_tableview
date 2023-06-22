@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gender Count by College</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #811e1e;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Gender Count by College</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>College</th>
+                <th>Male Count</th>
+                <th>Female Count</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+            <!-- Table rows will be dynamically added here -->
+        </tbody>
+    </table>
+
+    <script>
+        // Fetch the gender count data from the API
+        fetch('students/genderCount')
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.getElementById('tableBody');
+
+                // Iterate over the data and create table rows dynamically
+                Object.entries(data).forEach(([college, genderCounts]) => {
+                    const row = document.createElement('tr');
+                    
+                    const collegeCell = document.createElement('td');
+                    collegeCell.textContent = college;
+                    row.appendChild(collegeCell);
+
+                    const maleCountCell = document.createElement('td');
+                    maleCountCell.textContent = genderCounts['Male'] || 0;
+                    row.appendChild(maleCountCell);
+
+                    const femaleCountCell = document.createElement('td');
+                    femaleCountCell.textContent = genderCounts['Female'] || 0;
+                    row.appendChild(femaleCountCell);
+
+                    tableBody.appendChild(row);
+                });
+            })
+            .catch(error => {
+                console.log('Error:', error);
+            });
+    </script>
+</body>
+</html>
